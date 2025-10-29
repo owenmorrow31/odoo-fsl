@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Docker: up",
+      "type": "shell",
+      "command": "docker compose up -d",
+      "options": { "cwd": "${workspaceFolder}/docker" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker: down",
+      "type": "shell",
+      "command": "docker compose down",
+      "options": { "cwd": "${workspaceFolder}/docker" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Docker: logs (follow)",
+      "type": "shell",
+      "command": "docker compose logs -f odoo",
+      "options": { "cwd": "${workspaceFolder}/docker" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Client: npm dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": { "cwd": "${workspaceFolder}/client" },
+      "isBackground": true,
+      "problemMatcher": "$tsc-watch",
+      "presentation": { "reveal": "always" }
+    }
+  ]
+}

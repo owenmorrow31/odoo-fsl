@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      // Launch Vite in /client and auto-open the browser when it's ready
+      "type": "node",
+      "request": "launch",
+      "name": "Start React (Vite)",
+      "cwd": "${workspaceFolder}/client",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev"],
+      "console": "integratedTerminal",
+      "preLaunchTask": "Docker: up",
+      "serverReadyAction": {
+        // Match Vite's console line:  Local:  http://localhost:5173/
+        "pattern": "Local:\\s+(https?://localhost:\\d+/?)",
+        "uriFormat": "%s",
+        "action": "openExternally"
+      }
+    },
+
+    // OPTIONAL: only if you built Odoo with debugpy on port 5678
+    {
+      "type": "debugpy",
+      "request": "attach",
+      "name": "Attach to Odoo (debugpy:5678)",
+      "connect": { "host": "localhost", "port": 5678 },
+      "justMyCode": false,
+      "pathMappings": [
+        { "localRoot": "${workspaceFolder}/addons", "remoteRoot": "/mnt/extra-addons" }
+      ]
+    }
+  ],
+
+  "compounds": [
+    {
+      "name": "Dev: Client + Odoo",
+      "configurations": [
+        "Start React (Vite)"
+        // If you're using debugpy, also include:
+        // ,"Attach to Odoo (debugpy:5678)"
+      ]
+    }
+  ]
+}
