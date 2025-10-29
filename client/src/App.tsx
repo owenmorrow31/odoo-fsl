@@ -4,6 +4,7 @@ import { AuthProvider } from "./auth/AuthProvider";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Nav from "./components/Nav";
 
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ResetRequest from "./pages/ResetRequest";
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
   {
     element: <Layout />,
     children: [
-      { path: "/", element: <div style={{ padding: 20 }}><h2>Welcome to FSL</h2><p>This is your home page.</p></div> },
+      { path: "/", element: <Home /> },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
       { path: "/reset", element: <ResetRequest /> },

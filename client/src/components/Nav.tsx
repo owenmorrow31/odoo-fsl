@@ -1,24 +1,26 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../auth/useAuth";
+import "./Nav.css";
 
 export default function Nav() {
   const { user, signOut } = useAuth();
   return (
-    <header style={{ padding: "12px 20px", borderBottom: "1px solid #eee" }}>
-      <nav style={{ display: "flex", gap: 16, alignItems: "center" }}>
-        <Link to="/">FSL</Link>
-        <Link to="/app">Dashboard</Link>
-        <div style={{ marginLeft: "auto" }}>
+    <header className="nav-header">
+      <nav className="nav-container">
+        <Link to="/" className="nav-logo">FSL</Link>
+        <div className="nav-links">
+          {user && <Link to="/app" className="nav-link">Dashboard</Link>}
+        </div>
+        <div className="nav-actions">
           {user ? (
             <>
-              <span style={{ marginRight: 12, opacity: .7 }}>{user.email}</span>
-              <button onClick={signOut}>Sign out</button>
+              <span className="nav-user">{user.email}</span>
+              <button onClick={signOut} className="nav-btn">Sign Out</button>
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <span> · </span>
-              <Link to="/signup">Sign up</Link>
+              <Link to="/login" className="nav-link">Sign In</Link>
+              <Link to="/signup" className="nav-btn">Get Started</Link>
             </>
           )}
         </div>
